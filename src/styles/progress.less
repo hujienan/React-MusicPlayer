@@ -1,0 +1,19 @@
+.components-progress{
+  width: 100%;
+  height: 3px;
+  background: #ddd;
+  cursor: pointer;
+  .progress{
+    height: 3px;
+    position: relative;
+  }
+  .progress::after{
+    content: '';
+    width: 3px;
+    height: 17px;
+    background: rgb(202, 79, 79);
+    position: absolute;
+    top: -7px;
+    right: 0;
+  }
+}
