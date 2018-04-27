@@ -1,4 +1,4 @@
-# MusicPlay by React
+# MusicPlayer by React
 
 Fork or Clone
 
