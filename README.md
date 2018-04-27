@@ -9,4 +9,4 @@ npm install
 `
 npm start
 `
-[Online Demo]:https://hujienan.github.io/musicPlayer
+[Online Demo](https://hujienan.github.io/musicPlayer)
