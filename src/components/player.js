@@ -18,16 +18,37 @@ class Player extends Component{
     }
   }
 
+
   componentDidMount(){
-    $("#player").bind('timeupdate', (e)=>{
+    let player = $("#player")[0]
+    let ispLay = !player.paused
+    //regain thecover ***
+    // let rotateValue = Math.floor((player.currentTime % 20) * (360 / 20))
+    let musicCover = this.refs.musicCover
+    if(player.paused){
+      musicCover.style = 'animation-play-state: paused'
+    }
+    
+
+    let playWhere = Math.floor(100*(player.currentTime / player.duration))
+    this.setState({
+      isPlay: ispLay,
+      progress: playWhere,
+      duration: player.duration,
+      volume: player.volume*100,
+      leftTime: this.formatTime(player.duration - player.currentTime)
+    })
+
+    $(player).bind('timeupdate', (e)=>{
       let percent = Math.floor(100*(e.target.currentTime / e.target.duration))
       this.setState({
         volume: e.target.volume*100,
         progress: percent,
         duration: e.target.duration,
-        leftTime: this.formatTime(this.state.duration-e.target.currentTime)
+        leftTime: this.formatTime(player.duration-e.target.currentTime)
       })
     })
+    
   }
 
   componentWillUnmount(){
@@ -84,6 +105,17 @@ class Player extends Component{
     }
   }
 
+  changeMode(e){
+    e.preventDefault()
+    e.stopPropagation()
+    if(e.target.className === 'shuffle'){
+      Pubsub.publish('FROM_SHUFFLE')
+    }else if(e.target.className === 'circle'){
+      Pubsub.publish('FROM_CIRCLE')
+    }else{
+      Pubsub.publish('FROM_REPEAT')
+    }
+  }
   
   formatTime(time){
     if(time){
@@ -130,7 +162,10 @@ class Player extends Component{
           <div className="controlBtns">
             <i className="prev" onClick={this.playPrevOrNext.bind(this)}></i>
             <i className={`${this.state.isPlay ? 'pause' : 'play'}`} onClick={this.play.bind(this)}></i>
-            <i className="next" onClick={this.playPrevOrNext.bind(this)}></i>
+            <i className="next" onClick={this.playPrevOrNext.bind(this)}></i> 
+          </div>
+          <div className="playMode">
+              <i className={`${this.props.playMode === 'shuffle' ? 'shuffle' : (this.props.playMode === 'circle' ? 'circle' : 'repeat')}` } onClick={this.changeMode.bind(this)}></i>
           </div>
           
         </div>

@@ -4,7 +4,7 @@ import {HashRouter, Route} from 'react-router-dom'
 import Pubsub from 'pubsub-js'
 import Header from './header'
 import Player from './player'
-import PlayMode from './playMode'
+
 import MusicList from './musicList'
 import { MUSIC_LIST } from '../musiclist'
 
@@ -130,11 +130,8 @@ class App extends Component{
       <div>
         <Player
         currentMusicItem={this.state.currentMusicItem}
-        
-      />
-      <PlayMode
         playMode={this.state.playMode}
-      />
+        />
       </div>
       
     )

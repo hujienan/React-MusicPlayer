@@ -15,8 +15,11 @@
     color: white;
     text-align: center;
   }
-  .smallContainer{
+  .smallContainer, .control-container{
    position: relative; 
+  }
+  .smallContainer{
+    margin-bottom: 40px;
   }
   .left-time{
     display: block;
@@ -28,7 +31,7 @@
   }
   .volumeContainer{
     position: absolute;
-    right: 0;
+    right: 0px;
     top: 0;
     width: 200px;
   }
@@ -62,7 +65,7 @@
   }
   @keyframes rotating{
     0%{
-      transform: rotate(0);
+      transform: rotate(0deg);
     }
     100%{
       transform: rotate(360deg);
@@ -79,6 +82,8 @@
       width: 64px;
       height: 64px;
       cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
     }
   }
   
@@ -98,6 +103,37 @@
     background: url("../images/prev.png");
     background-repeat: no-repeat;
   }
-  
+  .playMode{
+    position: absolute;
+    bottom: 10px;
+    right: -100px;
+    
+    cursor: pointer;
+  }
+  .shuffle{
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-image: url("../images/shuffle.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .circle{
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-image: url("../images/circle.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .repeat{
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border-radius: 50%;
+    background: white;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
 }
 
