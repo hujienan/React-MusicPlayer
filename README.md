@@ -4,5 +4,8 @@ Fork or Clone
 
 `
 npm install
+`
+
+`
 npm start
 `
