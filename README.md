@@ -2,6 +2,8 @@
 
 [Online Demo](https://hujienan.github.io/musicPlayer)
 
+![Images](musicOne.PNG)
+
 ## Related Technologies
 
 React react-router-dom ES6 Pubsub
